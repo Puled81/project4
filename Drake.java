@@ -1,6 +1,6 @@
- float dogX, dogY, dogDX, dogDY;
-  float eggX, eggY, eggDX, eggDY;
-  float pinX, pinY, pinDX, pinDY;
+ float RedX, RedY, RedDX, RedDY;
+  float YelX, YelY, YelDX, YelDY;
+  float BluX, BluY, BluDX, BluDY;
   float ballDiameter;
   
   float mousex, mousey, mousedx, mousedy;
@@ -41,14 +41,14 @@ void setup() {
 }
 
 void reset(){
-   dogX=  random( middle,right );   dogY=  random( top, bottom );
-   eggX=  random( middle,right );   eggY=  random( top, bottom );
-   pinX=  random( middle,right );   pinY=  random( top, bottom );
+   RedX=  random( middle,right );   RedY=  random( top, bottom );
+   YelX=  random( middle,right );   YelY=  random( top, bottom );
+   BluX=  random( middle,right );   BluY=  random( top, bottom );
    // Random speeds
  
-   dogDX=  random( 1,3 );   dogDY=  random( 1,3 );
-   eggDX=  random( 1,3 );   eggDY=  random( 1,3 );
-   pinDX=  random( 1,3 );  pinDY=  random( 1,3 );
+   RedDX=  random( 1,3 );   RedDY=  random( 1,3 );
+   YelDX=  random( 1,3 );   YelDY=  random( 1,3 );
+   BluDX=  random( 1,3 );  BluDY=  random( 1,3 );
   
   wallx = right/2;
   
@@ -89,46 +89,46 @@ void table(float left, float top, float right, float bottom){
  }
    
  void bounce(){    //balls bounce off wall
-  dogX += dogDX;  if ( dogX<left || dogX>right )   dogDX *= -1;
-  dogY += dogDY;  if ( dogY<top  || dogY>bottom ) dogDY *=  -1;
-  eggX += eggDX;  if ( eggX<left || eggX>right )   eggDX *= -1;
-  eggY += eggDY;  if ( eggY<top  || eggY>bottom ) eggDY *=  -1;
-  pinX += pinDX;  if ( pinX<left || pinX>right )   pinDX *= -1;
-  pinY += pinDY;  if ( pinY<top  || pinY>bottom ) pinDY *=  -1;
+  RedX += RedDX;  if ( RedX<left || RedX>right )   RedDX *= -1;
+  RedY += RedDY;  if ( RedY<top  || RedY>bottom ) RedDY *=  -1;
+  YelX += YelDX;  if ( YelX<left || YelX>right )   YelDX *= -1;
+  YelY += YelDY;  if ( YelY<top  || YelY>bottom ) YelDY *=  -1;
+  BluX += BluDX;  if ( BluX<left || BluX>right )   BluDX *= -1;
+  BluY += BluDY;  if ( BluY<top  || BluY>bottom ) BluDY *=  -1;
   
- {dogX += dogDX;  if ( dogX<wallx+15 )   dogDX *= -1;
-  eggX += eggDX;  if ( eggX<wallx+15 )   eggDX *= -1;
-  pinX += pinDX;  if ( pinX<wallx+15 )   pinDX *= -1;
+ {RedX += RedDX;  if ( RedX<wallx+15 )   RedDX *= -1;
+  YelX += YelDX;  if ( YelX<wallx+15 )   YelDX *= -1;
+  BluX += BluDX;  if ( BluX<wallx+15 )   BluDX *= -1;
   }
  }
 
 
 void collisions() {
-  float tmp;          // Swaping velocities
-  if ( dist( dogX,dogY, eggX,eggY ) < 30 ) {
-    tmp=eggDX;  eggDX=dogDX;  dogDX=tmp;
-    tmp=eggDY;  eggDY=dogDY;  dogDY=tmp;
+  float tmp;          // SwaBlug velocities
+  if ( dist( RedX,RedY, YelX,YelY ) < 30 ) {
+    tmp=YelDX;  YelDX=RedDX;  RedDX=tmp;
+    tmp=YelDY;  YelDY=RedDY;  RedDY=tmp;
   }
-  if ( dist( dogX,dogY, pinX,pinY) < 30 ) {
-    tmp=pinDX;  pinDX=dogDX;  dogDX=tmp;
-    tmp=pinDY;  pinDY=dogDY;  dogDY=tmp;
+  if ( dist( RedX,RedY, BluX,BluY) < 30 ) {
+    tmp=BluDX;  BluDX=RedDX;  RedDX=tmp;
+    tmp=BluDY;  BluDY=RedDY;  RedDY=tmp;
   }
-  if ( dist( pinX,pinY, eggX, eggY) < 30 ) {
-    tmp=eggDX;  eggDX=pinDX;  pinDX=tmp;
-    tmp=eggDY;  eggDY=pinDY;  pinDY=tmp;
+  if ( dist( BluX,BluY, YelX, YelY) < 30 ) {
+    tmp=YelDX;  YelDX=BluDX;  BluDX=tmp;
+    tmp=YelDY;  YelDY=BluDY;  BluDY=tmp;
   }
   
 }
 void show(){       // create balls
-  fill( 255,255,255 );    ellipse( dogX,dogY, 30,30 );
-  fill( 255,0,0 );    ellipse( dogX,dogY, 30,30 );
-  fill( 255,255,0 );  ellipse( eggX,eggY, 30,30 );
-  fill( 0,0,255 );    ellipse( pinX,pinY, 30,30 );
+  fill( 255,255,255 );    ellipse( RedX,RedY, 30,30 );
+  fill( 255,0,0 );    ellipse( RedX,RedY, 30,30 );
+  fill( 255,255,0 );  ellipse( YelX,YelY, 30,30 );
+  fill( 0,0,255 );    ellipse( BluX,BluY, 30,30 );
   textSize(20);
   fill(0);
-  text("1",dogX-6,dogY+5);
-  text("2", eggX-6,eggY+5);
-  text("3",pinX-6,pinY+5);
+  text("1",RedX-6,RedY+5);
+  text("2", YelX-6,YelY+5);
+  text("3",BluX-6,BluY+5);
   textSize(12);
 }
 
@@ -138,7 +138,7 @@ void messages(){        //message placement
   text( news, 20, 40 );
   text( author, 50, height-5 );
   text("Press 'M' to start the mouse",450,10);
-  text("Press 'P' to change table color to pink",450,20);
+  text("Press 'P' to change table color to Bluk",450,20);
   text("Press 'W' to remove the wall",450,30);
 }
 
@@ -168,17 +168,17 @@ void mouse(){
 }
 
 void mousePressed(){
-  if(dist(mouseX,mouseY,dogX,dogY) <ballDiameter/2){
-   dogX=random(middle,right);
-   dogY=random(top,bottom);
+  if(dist(mouseX,mouseY,RedX,RedY) <ballDiameter/2){
+   RedX=random(middle,right);
+   RedY=random(top,bottom);
  }
- if(dist(mouseX,mouseY,eggX,eggY) <ballDiameter/2){
-   eggX=random(middle,right);
-   eggY=random(top,bottom);
+ if(dist(mouseX,mouseY,YelX,YelY) <ballDiameter/2){
+   YelX=random(middle,right);
+   YelY=random(top,bottom);
  }
-  if(dist(mouseX,mouseY,pinX,pinY) <ballDiameter/2){
-   pinX=random(middle,right);
-   pinY=random(top,bottom);
+  if(dist(mouseX,mouseY,BluX,BluY) <ballDiameter/2){
+   BluX=random(middle,right);
+   BluY=random(top,bottom);
  }
  
 }
@@ -192,16 +192,16 @@ void keyPressed(){
    strokeWeight(1);
   }
   if (key == '1'){
-    dogX= random(middle+10,right);
-    dogY= random(top,bottom);
+    RedX= random(middle+10,right);
+    RedY= random(top,bottom);
   }
   if (key == '2'){
-    eggX= random(middle+10,right);
-    eggY= random(top,bottom);
+    YelX= random(middle+10,right);
+    YelY= random(top,bottom);
   }
   if (key == '3'){
-    pinX= random(middle+10,right);
-    pinY= random(top,bottom);
+    BluX= random(middle+10,right);
+    BluY= random(top,bottom);
   }
   if (key == 'w') {  // wall goes out of way
     wallx=-100;
