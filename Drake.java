@@ -14,7 +14,6 @@
   int score = 0;
   int frameNumber=0;
   
-  String title=  "CST112 MIDTERM EXAM";
   String news=   "Click any ball to reset it to right half of table.  (r resets all.)";
   String author=  "Drake";
   
